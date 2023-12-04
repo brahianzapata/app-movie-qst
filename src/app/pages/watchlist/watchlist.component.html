@@ -1,3 +1,15 @@
+
+<div class="d-flex  justify-content-center">
+  <div class="btn-group m-2 w-40" role="group">
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" [checked]="path === '/home'">
+    <label class="btn btn-outline-primary" for="btnradio1" [routerLink]="['/home']">Home</label>
+
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" [checked]="path === '/watchlist'">
+    <label class="btn btn-outline-primary" for="btnradio3" [routerLink]="['/watchlist']">Watchlist</label>
+  </div>
+</div>
+
+
 <div class="row m-2 justify-content-center" *ngIf="favoritesMovies.length > 0">
 
   <app-card-movie class="col-12 col-sm-6 col-md-4 col-lg-3 p-0 m-3" *ngFor="let favoriteMovie of favoritesMovies" [movie]="favoriteMovie"></app-card-movie>

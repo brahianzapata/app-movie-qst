@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
@@ -10,14 +11,17 @@ import { MovieService } from 'src/app/services/movie.service';
 export class WatchlistComponent implements OnInit {
 
   public favoritesMovies: any[] = [];
+  public path = '';
 
   constructor(
     private router: Router,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     this.favoritesMovies = this.movieService.moviesLocalStorage;
+    this.path = this.location.path();
   }
 
   onMovieDetail( movie: any ) {

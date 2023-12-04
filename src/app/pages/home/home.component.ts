@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +11,17 @@ import { MovieService } from '../../services/movie.service';
 export class HomeComponent implements OnInit {
 
   public movies: any[] = [];
+  public path = '';
 
   constructor(
     private router: Router,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     this.movies = this.movieService.getMovies();
+    this.path = this.location.path();
   }
 
   onMovieDetail( movie: any ) {

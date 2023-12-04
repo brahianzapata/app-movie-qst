@@ -91,6 +91,14 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/app-movies-qst",
+            "netlifyToken": "nfp_Fnq8VZkLc1H6Q8APyz8XTkHiXDxdWqLRdcb1 ",
+            "siteId": ""
+          }
         }
       }
     }
