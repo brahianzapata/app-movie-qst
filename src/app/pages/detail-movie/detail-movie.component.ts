@@ -20,8 +20,8 @@ export class DetailMovieComponent implements OnInit {
     private router: Router,
     private location: Location
   ) {
-      this.activatedRoute.params.subscribe( params => {
-        console.log("params ", params);
+      this.activatedRoute.params.subscribe( ({title}) => {
+        this.movie = movieService.getMovie(title);
       });
   }
 
