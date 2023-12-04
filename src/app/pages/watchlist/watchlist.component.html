@@ -1,0 +1,8 @@
+<div class="row m-2 justify-content-center" *ngIf="favoritesMovies.length > 0">
+
+  <app-card-movie class="col-12 col-sm-6 col-md-4 col-lg-3 p-0 m-3" *ngFor="let favoriteMovie of favoritesMovies" [movie]="favoriteMovie"></app-card-movie>
+
+</div>
+
+<h2 *ngIf="favoritesMovies.length === 0" class="d-flex justify-content-center m-5">Aun no hay favoritos</h2>
+
