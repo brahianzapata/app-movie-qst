@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Movie } from '../share/movie.interface';
 
-const reponseMovies: Movie[] = [
+const responseMovies: Movie[] = [
     {
       title: "Tenet",
       description: "Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
@@ -60,12 +60,31 @@ export class MovieService {
     this.loadFavorites();
   }
 
-  getMovies( ): Movie[] {
-    return reponseMovies;
+  getMoviesSortBy(sortBy?: string): Movie[] {
+    switch (sortBy) {
+      case 'rating':
+        const sortedMoviesByRating = responseMovies.sort((a, b) => b.rating! - a.rating!);
+
+        return sortedMoviesByRating;
+
+      case 'title':
+        const sortedMoviesByTitle = responseMovies.sort((a, b) => (b.title as any) - (a.title as any));
+        console.log("sort title", sortedMoviesByTitle);
+
+        return sortedMoviesByTitle;
+
+      case 'release_date':
+        const sortedMoviesByDate = responseMovies.sort((a, b) => (new Date(a.releasedDate as any) as any) - (new Date(b.releasedDate as any) as any ));
+
+        return sortedMoviesByDate;
+      default:
+
+        return responseMovies;
+    }
   }
 
   getMovie(title: string): Movie {
-    return reponseMovies.find(movie => movie.title === title)!;
+    return responseMovies.find(movie => movie.title === title)!;
   }
 
   /* CRUD de los favoritos */

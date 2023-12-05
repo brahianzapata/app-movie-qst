@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.movies = this.movieService.getMovies();
+    this.movies = this.movieService.getMoviesSortBy();
     this.path = this.location.path();
   }
 
@@ -29,4 +29,9 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/movie', movie.title ]);
   }
 
+  sortByChanged(event: Event): void {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+
+    this.movies = this.movieService.getMoviesSortBy(selectedValue);
+  }
 }

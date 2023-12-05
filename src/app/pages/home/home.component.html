@@ -9,9 +9,16 @@
   </div>
 </div>
 
+<div class="d-flex justify-content-end m-2">
+  <div class="m-1 w-25">
+    <select class="form-select" (change)="sortByChanged($event)">
+      <option selected>Select sort by</option>
+      <option value="title">Sort by Title</option>
+      <option value="release_date">Sort by Release date</option>
+    </select>
+  </div>
+</div>
 
 <div class="row m-2 justify-content-center">
-
   <app-card-movie class="col-12 col-sm-6 col-md-4 col-lg-3 p-0 m-3" *ngFor="let movie of movies" [movie]="movie"></app-card-movie>
-
 </div>
