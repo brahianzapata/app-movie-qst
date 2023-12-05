@@ -35,7 +35,9 @@
 
       <iframe width="350" height="250" [src]="getVideoIframe(movie.trailerLink)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-      <span>{{ movie.releasedDate }}</span>
+      <div class="date">
+        <span >{{ movie.releasedDate }}</span>
+      </div>
 
       <div class="row mt-5">
           <div class="col">
