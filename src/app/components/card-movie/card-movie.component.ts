@@ -1,19 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from 'src/app/share/movie.interface';
 
 @Component({
   selector: 'app-card-movie',
   templateUrl: './card-movie.component.html',
-  styleUrls: ['./card-movie.component.css']
+  styleUrls: ['./card-movie.component.scss']
 })
-export class CardMovieComponent implements OnInit {
+export class CardMovieComponent {
 
   @Input() movie: Movie = {
     title: "",
     description: "",
-    rating: undefined,
+    rating: 0,
     duration: "",
     genre: [],
     releasedDate: "",
@@ -24,10 +24,6 @@ export class CardMovieComponent implements OnInit {
     private router: Router,
     private movieService: MovieService
   ) { }
-
-  ngOnInit(): void {
-
-  }
 
   addFavorite(movie: Movie){
     this.movieService.addFavorite(movie);

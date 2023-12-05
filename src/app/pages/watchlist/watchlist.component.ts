@@ -7,7 +7,7 @@ import { Movie } from 'src/app/share/movie.interface';
 @Component({
   selector: 'app-watchlist',
   templateUrl: './watchlist.component.html',
-  styleUrls: ['./watchlist.component.css']
+  styleUrls: ['./watchlist.component.scss']
 })
 export class WatchlistComponent implements OnInit {
 
@@ -28,5 +28,4 @@ export class WatchlistComponent implements OnInit {
   onMovieDetail( movie: Movie ) {
     this.router.navigate(['/movie', movie.title ]);
   }
-
 }

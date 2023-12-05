@@ -9,6 +9,7 @@ import { NoFoundComponent } from './pages/no-found/no-found.component';
 import { CardMovieComponent } from './components/card-movie/card-movie.component';
 import { DetailMovieComponent } from './pages/detail-movie/detail-movie.component';
 import { FavoritePipe } from './pipes/favorite.pipe';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FavoritePipe } from './pipes/favorite.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

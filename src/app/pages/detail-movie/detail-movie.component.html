@@ -8,10 +8,10 @@
 
   <div class="col-md-6 p-3">
       <h3>{{movie.title}}
-        <ng-container  *ngIf="(movie.title! | favorite); then removeFavoriteTemplate else addFavoriteTemplate"></ng-container>
+        <ng-container  *ngIf="(movie.title | favorite); then removeFavoriteTemplate else addFavoriteTemplate"></ng-container>
 
         <ng-template  #removeFavoriteTemplate>
-          <svg (click)="removeFavorite(movie.title!)" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill color-icon" viewBox="0 0 16 16">
+          <svg (click)="removeFavorite(movie.title)" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill color-icon" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
           </svg>
         </ng-template>
@@ -33,7 +33,9 @@
         <span class="badge badge-pill badge-primary" *ngFor="let genre of movie.genre">{{genre}}</span>
       </div>
 
-      <iframe width="350" height="250" [src]="getVideoIframe(movie.trailerLink!)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="350" height="250" [src]="getVideoIframe(movie.trailerLink)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+      <span>{{ movie.releasedDate }}</span>
 
       <div class="row mt-5">
           <div class="col">

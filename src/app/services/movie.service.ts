@@ -62,23 +62,15 @@ export class MovieService {
 
   getMoviesSortBy(sortBy?: string): Movie[] {
     switch (sortBy) {
-      case 'rating':
-        const sortedMoviesByRating = responseMovies.sort((a, b) => b.rating! - a.rating!);
-
-        return sortedMoviesByRating;
-
       case 'title':
-        const sortedMoviesByTitle = responseMovies.sort((a, b) => (b.title as any) - (a.title as any));
-        console.log("sort title", sortedMoviesByTitle);
-
+        const sortedMoviesByTitle = responseMovies.sort((a, b) => a.title.localeCompare(b.title));
         return sortedMoviesByTitle;
 
       case 'release_date':
-        const sortedMoviesByDate = responseMovies.sort((a, b) => (new Date(a.releasedDate as any) as any) - (new Date(b.releasedDate as any) as any ));
-
+        const sortedMoviesByDate = responseMovies.sort((a, b) => a.releasedDate.localeCompare(b.releasedDate));
         return sortedMoviesByDate;
-      default:
 
+      default:
         return responseMovies;
     }
   }

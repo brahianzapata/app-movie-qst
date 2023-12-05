@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
@@ -8,19 +8,20 @@ import { Movie } from 'src/app/share/movie.interface';
 @Component({
   selector: 'app-detail-movie',
   templateUrl: './detail-movie.component.html',
-  styleUrls: ['./detail-movie.component.css']
+  styleUrls: ['./detail-movie.component.scss']
 })
-export class DetailMovieComponent implements OnInit {
+export class DetailMovieComponent {
 
   public movie: Movie = {
     title: "",
     description: "",
-    rating: undefined,
+    rating: 0,
     duration: "",
     genre: [],
     releasedDate: "",
     trailerLink: ""
   };
+  isFavorite: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,9 +35,7 @@ export class DetailMovieComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {}
-
-  addFavorite(movie: Movie){
+  addFavorite(movie: Movie) {
     this.movieService.addFavorite(movie);
   }
 
