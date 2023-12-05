@@ -1,0 +1,16 @@
+
+
+.badge-pill {
+  background: darkblue;
+  margin-left: 5px;
+}
+
+.group-badges {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.color-icon {
+  color: red;
+  cursor: pointer;
+}

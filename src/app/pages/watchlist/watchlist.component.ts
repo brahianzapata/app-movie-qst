@@ -1,7 +1,8 @@
 import { Location } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
+import { Movie } from 'src/app/share/movie.interface';
 
 @Component({
   selector: 'app-watchlist',
@@ -10,7 +11,7 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class WatchlistComponent implements OnInit {
 
-  public favoritesMovies: any[] = [];
+  public favoritesMovies: Movie[] = [];
   public path = '';
 
   constructor(
@@ -24,7 +25,7 @@ export class WatchlistComponent implements OnInit {
     this.path = this.location.path();
   }
 
-  onMovieDetail( movie: any ) {
+  onMovieDetail( movie: Movie ) {
     this.router.navigate(['/movie', movie.title ]);
   }
 

@@ -1,7 +1,9 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
+import { Movie } from 'src/app/share/movie.interface';
 
 @Component({
   selector: 'app-detail-movie',
@@ -10,15 +12,22 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class DetailMovieComponent implements OnInit {
 
-  public title: string = '';
-  public movie: any = [];
-  public loading: boolean = true;
+  public movie: Movie = {
+    title: "",
+    description: "",
+    rating: undefined,
+    duration: "",
+    genre: [],
+    releasedDate: "",
+    trailerLink: ""
+  };
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    public sanitazer: DomSanitizer
   ) {
       this.activatedRoute.params.subscribe( ({title}) => {
         this.movie = movieService.getMovie(title);
@@ -27,8 +36,32 @@ export class DetailMovieComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  addFavorite(movie: Movie){
+    this.movieService.addFavorite(movie);
+  }
+
+  removeFavorite(title: string){
+    this.movieService.deleteFavorite(title);
+  }
+
   onBack() {
     this.location.back();
+  }
+
+  onHome() {
+    this.router.navigate(['/home']);
+  }
+
+  getVideoIframe(url: string) {
+    var video, results;
+
+    if (url === null) {
+        return '';
+    }
+    results = url.match('[\\?&]v=([^&#]*)');
+    video   = (results === null) ? url : results[1];
+
+    return this.sanitazer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
   }
 
 }
