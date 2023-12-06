@@ -24,6 +24,7 @@
       </div>
       <p class="card-text">{{ movie.description }}</p>
       <span>{{ movie.releasedDate }}</span>
+      <span *ngIf="(movie.title | favorite)" class="label-watchlist" [routerLink]="['/watchlist']">On my watchlist</span>
   </div>
 
 </div>

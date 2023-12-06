@@ -11,17 +11,15 @@ import { Movie } from 'src/app/share/movie.interface';
 })
 export class WatchlistComponent implements OnInit {
 
-  public favoritesMovies: Movie[] = [];
   public path = '';
 
   constructor(
     private router: Router,
-    private movieService: MovieService,
+    public movieService: MovieService,
     private location: Location
   ) { }
 
   ngOnInit(): void {
-    this.favoritesMovies = this.movieService.moviesLocalStorage;
     this.path = this.location.path();
   }
 
